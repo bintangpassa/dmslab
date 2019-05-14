@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ajax extends CI_Controller {
+class Ajax_akun extends CI_Controller {
 	protected $login=false;
  
 	protected $id_user;
@@ -24,6 +24,23 @@ class Ajax extends CI_Controller {
 		} 
 	}
 
+	function bagian_leveluser(){
+		$leveluser=($this->input->post('leveluser'));
+
+		if ($leveluser==3) {
+			$query=$this->db->query("SELECT nama_mk,id_mk FROM matakuliah");
+			if($query){
+				foreach ($query->result_array() as $mk) {
+					echo "<option value=$mk[id_mk]>$mk[nama_mk]</option>";
+				}
+			}
+		}
+		else{
+			echo "<option value=0>Tidak ada</option>";
+		}
+
+	}
+
 	function new_akun(){
 		$username=trim(($this->input->post("username")));
 		$email=($this->input->post("email"));
@@ -31,6 +48,7 @@ class Ajax extends CI_Controller {
 		$password=sha1(md5($this->input->post("password")));
 		$nipnim=($this->input->post("nipnim"));
 		$level=($this->input->post("leveluser"));
+		$bagian=($this->input->post("bagian"));
 		$terdaftar=date("Y-m-d h:i:s",time());
 
 		// $level=($admin_level=="super")?"1":"0";
@@ -66,6 +84,7 @@ class Ajax extends CI_Controller {
 				}
 			}
 
+			// input tabel dosen dan matakuliah
 			if ($level==3) {
 				$query=$this->db->query("SELECT id_user FROM user WHERE nama_user='$username' AND tgl_terdaftar_user='$terdaftar'");
 				foreach ($query->result_array() as $user) {
@@ -73,9 +92,10 @@ class Ajax extends CI_Controller {
 				}
 				if ($query) {
 					$query1=$this->db->insert('dosen',array('id_user'=>$id_user,
-										 'id_mk'=>'1',
+										 'id_mk'=>$bagian,
 										 'status_dosen'=>'1',
-										 'terhapus_aslab'=>'0',
+										 'id_prodi'=>'1',
+										 'terhapus_dosen'=>'0',
 										));
 				}
 			}

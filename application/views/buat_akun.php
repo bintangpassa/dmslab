@@ -64,14 +64,10 @@
                         <option value='5'>Staff</option>
                       </select>
           				</div> 
-                  <div class='form-group' id="bagianaslabb">
-                    <label for='bagianaslab'>Bagian Aslab</label>
-                      <select class='form-control' name='bagianaslab' id='bagianaslab'>
-                        <option value='1' selected>1</option>
-                        <option value='2'>2</option>
-                        <option value='3'>3</option>
-                        <option value='4'>4</option>
-                        <option value='5'>5</option>
+                  <div class='form-group' id="bagian">
+                    <label for='bagian'>Bagian</label>
+                      <select class='form-control' name='bagian' id='bagianselect'>
+                        
                       </select>
                   </div>        				
           				<div class="text-center"><button type='submit' class='btn btn-primary'>Simpan</button></div>

@@ -38,15 +38,7 @@ class Dms extends CI_Controller {
 			redirect("dms/login");
 		}
 		else {
-			$data=array(
-				'title'=>"Home",
-				'user'=>$this->nama_lengkap_user,
-				'user_level'=>$this->level_user,
-				'burl'=>base_url()."index.php/dms/",
-				);
-			$this->load->view('home_head',$data);
-			$this->load->view('instruksikerja_al');
-			$this->load->view('home_foot');
+			redirect("dms/daftar_akun");
 		}
 	}
 
@@ -116,6 +108,7 @@ class Dms extends CI_Controller {
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
+				'npage'=>"",
 				);
 
 			$this->load->view('home_head',$data);
@@ -135,6 +128,7 @@ class Dms extends CI_Controller {
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
+				'npage'=>"",
 				);
 
 			$this->load->view('home_head',$data);
@@ -154,6 +148,7 @@ class Dms extends CI_Controller {
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
+				'npage'=>"",
 				);
 
 			$this->load->view('home_head',$data);
@@ -173,6 +168,7 @@ class Dms extends CI_Controller {
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
+				'npage'=>"",
 				);
 
 			$this->load->view('home_head',$data);
@@ -192,6 +188,7 @@ class Dms extends CI_Controller {
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
+				'npage'=>"",
 				);
 
 			$this->load->view('home_head',$data);
@@ -211,6 +208,7 @@ class Dms extends CI_Controller {
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
+				'npage'=>"",
 				);
 
 			$this->load->view('home_head',$data);
@@ -230,6 +228,7 @@ class Dms extends CI_Controller {
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
+				'npage'=>"",
 				);
 
 			$this->load->view('home_head',$data);
@@ -249,6 +248,7 @@ class Dms extends CI_Controller {
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
+				'npage'=>"",
 				);
 
 			$this->load->view('home_head',$data);
@@ -268,6 +268,7 @@ class Dms extends CI_Controller {
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
+				'npage'=>"",
 				);
 
 			$this->load->view('home_head',$data);
@@ -311,7 +312,8 @@ class Dms extends CI_Controller {
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
-				'daftar_akun'=>$this->dakun
+				'daftar_akun'=>$this->dakun,
+				'npage'=>"",
 				);
 			$this->load->view('home_head',$data);
 			$this->load->view('daftar_akun');
@@ -345,7 +347,8 @@ class Dms extends CI_Controller {
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
-				'daftar_akun'=>$this->dakun
+				'daftar_akun'=>$this->dakun,
+				'npage'=>"",
 				);
 			$this->load->view('home_head',$data);
 			$this->load->view('input_matakuliah');
@@ -368,7 +371,8 @@ class Dms extends CI_Controller {
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
-				'daftar_akun'=>$this->dakun
+				'daftar_akun'=>$this->dakun,
+				'npage'=>"",
 				);
 			$this->load->view('home_head',$data);
 			$this->load->view('atur_jenisdokumen');
