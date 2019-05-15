@@ -273,7 +273,7 @@
                   password=_this.find("input#password").val(),
                   repassword=_this.find("input#repassword").val(),
                   nipnim=_this.find("input#nipnim").val(),
-                  leveluser=_this.find("select#leveluser").val();
+                  leveluser=_this.find("select#leveluser").val(),
                   bagian=_this.find("select#bagian").val();
 
                 $.ajax({
@@ -310,40 +310,36 @@
 
     <!-- script untuk atur matakuliah -->
     <script type="text/javascript">
-      <?php  if($npage=="buat_akun"){ ?>
+      <?php  if($npage=="atur_mk"){ ?>
         /*From menambah matakuliah*/
         /* Untuk mencek inputan user*/
-        var valid_username=false,
-            valid_email=false,
-            valid_full_name=false,
-            valid_password=false,
-            valid_repassword=false,
-            valid_nipnim=false,
+        var valid_kodemk=false,
+            valid_namamk=false,
             ajax_request=false;
 
-        /*username*/
-        $(".form-user-baru input#username").blur(function(){
-          var userval=$(this).val();
+        /*kodemk*/
+        $(".form-mk-baru input#kodemk").blur(function(){
+          var kodemkval=$(this).val();
           var p=$(this);
-          if(userval!=''){
-            if(/^[\w]+$/.test(userval)){
-            if(userval.length>2){
+          if(kodemkval!=''){
+            if(/^[\w]+$/.test(kodemkval)){
+            if(kodemkval.length>2){
             $.ajax({
               type:"POST",
-              url:"<?php echo base_url();?>index.php/Ajax_akun/cek_new_username",
-              data:{username:userval},
+              url:"<?php echo base_url();?>index.php/Ajax_aturmk/cek_new_kodemk",
+              data:{kodemk:kodemkval},
               cache:false,
               success:function(a){
-                if(a=='ok' && userval.length>2){
+                if(a=='ok' && kodemkval.length>2){
                  p.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-ok form-control-feedback feed-success');
                   p.parent().siblings('span.label-danger').html("");
-                  valid_username=true;
+                  valid_kodemk=true;
                  
                 }
                 else if(a=='terpakai') {
                    p.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-remove form-control-feedback feed-error');
-                   p.parent().siblings('span.label-danger').html('Username ini sudah terpakai');
-                   valid_username=false;
+                   p.parent().siblings('span.label-danger').html('Kode Matakuliah ini sudah terpakai');
+                   valid_kodemk=false;
                 }
               }
             });
@@ -351,120 +347,44 @@
             else {
                    p.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-remove form-control-feedback feed-error');
                    p.parent().siblings('span.label-danger').html('Harus minimal 3 karakter');
-                   valid_username=false;
+                   valid_kodemk=false;
             }
           }
           else {
                    p.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-remove form-control-feedback feed-error');
                    p.parent().siblings('span.label-danger').html('Karakter hanya diperbolehkan huruf/kata/underscore, dan jgn ada spasi');
-                   valid_username=false;
+                   valid_kodemk=false;
           }
           }else{
              p.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-remove form-control-feedback feed-error');
                    p.parent().siblings('span.label-danger').html('Tidak boleh kosong');
-                   valid_username=false;
+                   valid_kodemk=false;
           }
         })
-      /*email*/
-      $(".form-user-baru input#email").on("blur keyup",function(){
-        var mailval=$(this).val();
-        var z=$(this);
-        if(/^[\w-.]+@[0-9a-zA-Z_.]+\.[0-9a-zA-Z_.]+$/.test(mailval)){
-           z.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-ok form-control-feedback feed-success');
-           z.parent().siblings('span.label-danger').html("");
-           valid_email=true;
-                 
-                }
-         else {
-           z.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-remove form-control-feedback feed-error');
-           z.parent().siblings('span.label-danger').html('Format email tidak benar');
-           valid_email=false;
-        }
-      });
 
-      $(".form-user-baru input#nama_lengkap").on("blur keyup",function(){
-        var namavall=$(this).val();
+      $(".form-mk-baru input#namamk").on("blur keyup",function(){
+        var namamkvall=$(this).val();
         var zz=$(this);
-        if(namavall!=''){
-          if(/^\w[\w\s]+$/.test(namavall)){
+        if(namamkvall!=''){
+          if(/^\w[\w\s]+$/.test(namamkvall)){
             zz.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-ok form-control-feedback feed-success');
            zz.parent().siblings('span.label-danger').html('');
-           valid_full_name=true;
+           valid_namamk=true;
           } else {
             zz.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-remove form-control-feedback feed-error');
            zz.parent().siblings('span.label-danger').html('Hanya diperbolehkan huruf/angka/underscore/spasi. Dan jg ada spasi di awal');
-           valid_full_name=false;
+           valid_namamk=false;
           }
         } else {
            zz.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-remove form-control-feedback feed-error');
            zz.parent().siblings('span.label-danger').html('Tidak boleh kosong');
-           valid_full_name=false;
-        }
-      });
-
-      $(".form-user-baru input#password").on("blur keyup",function(e){
-        if(e.type='keyup'){
-          $(".form-user-baru input#repassword").val('').siblings('.form-control-feedback').attr('class','form-control-feedback');
-           valid_repassword=false;
-        }
-        var passvall=$(this).val();
-        var yy=$(this);
-        if(passvall!=''){
-          if(passvall.length>=8){
-            yy.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-ok form-control-feedback feed-success');
-           yy.parent().siblings('span.label-danger').html('');
-           valid_password=true;
-          }else{
-            yy.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-remove form-control-feedback feed-error');
-           yy.parent().siblings('span.label-danger').html('Minimal 8 karakter');
-           valid_password=false;
-          }
-        } else {
-          yy.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-remove form-control-feedback feed-error');
-           yy.parent().siblings('span.label-danger').html('Tidak boleh kosong');
-           valid_password=false;
-        }
-      });
-      
-      $(".form-user-baru input#repassword").on("blur keyup",function(e){
-        var repass=$(this).val();
-        var yyy=$(this);
-        var passbef=$(".form-user-baru input#password").val();
-        
-        if(repass==passbef){
-           yyy.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-ok form-control-feedback feed-success');
-           yyy.parent().siblings('span.label-danger').html('');
-           valid_repassword=true;
-        } else {
-           yyy.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-remove form-control-feedback feed-error');
-           yyy.parent().siblings('span.label-danger').html('Password tidak sama');
-           valid_repassword=false;
-        }
-      });
-
-      $(".form-user-baru input#nipnim").on("blur keyup",function(){
-        var nipnimvall=$(this).val();
-        var nzz=$(this);
-        if(nipnimvall!=''){
-          if(/^\w[\w\s]+$/.test(nipnimvall)){
-            nzz.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-ok form-control-feedback feed-success');
-           nzz.parent().siblings('span.label-danger').html('');
-           valid_nipnim=true;
-          } else {
-            nzz.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-remove form-control-feedback feed-error');
-           nzz.parent().siblings('span.label-danger').html('Hanya diperbolehkan huruf/angka/underscore/spasi. Dan tidak ada spasi di awal');
-           valid_nipnim=false;
-          }
-        } else {
-           nzz.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-remove form-control-feedback feed-error');
-           nzz.parent().siblings('span.label-danger').html('Tidak boleh kosong');
-           valid_nipnim=false;
+           valid_namamk=false;
         }
       });
 
       var form_no_error=false;
       function cek_no_error(){
-        if(valid_username && valid_email && valid_full_name && valid_password && valid_repassword && valid_nipnim){
+        if(valid_kodemk && valid_namamk){
           form_no_error=true;
         }else{
           form_no_error=false;
@@ -473,11 +393,11 @@
       setInterval(cek_no_error,500);
       ajax_request=false;
       
-            $('.form-user-baru').submit(function(e){
+            $('.form-mk-baru').submit(function(e){
                 e.preventDefault();
                 if(!ajax_request){
                 if(form_no_error){
-                    proses_new_admin($(this));  
+                    proses_new_mk($(this));  
                  }
                  else {
                   error_alert("Form belum terisi");
@@ -485,26 +405,26 @@
                }
               });
 
-            function proses_new_admin(_this){
+            function proses_new_mk(_this){
               ajax_request=false;
               if(!ajax_request){
                 ajax_request=true;
-                show_proses("Menambahkan akun baru...");
-              var username=_this.find("input#username").val(),
-                  email=_this.find("input#email").val(),
-                  nama_lengkap=_this.find("input#nama_lengkap").val(),
-                  password=_this.find("input#password").val(),
-                  repassword=_this.find("input#repassword").val(),
+                show_proses("Menambahkan matakuliah baru...");
+
+              var kodemk=_this.find("input#kodemk").val(),
+                  namamk=_this.find("input#namamk").val(),
+                  sksmk=_this.find("select#sksmk").val(),
+                  semestermk=_this.find("select#semestermk").val();
 
                 $.ajax({
                   type:"POST",
-                  url:"<?php echo base_url();?>index.php/Ajax_akun/new_akun",
-                  data:{"username":username,"email":email,"nama":nama_lengkap,"password":password,"repassword":repassword,"nipnim":nipnim,"leveluser":leveluser,"bagian":bagian},
+                  url:"<?php echo base_url();?>index.php/Ajax_aturmk/new_mk",
+                  data:{"kodemk":kodemk,"namamk":namamk,"sksmk":sksmk,"semestermk":semestermk},
                   cache:false,
                   success:function(a){
                     if(a=="ok"){
                       hide_proses();
-                    window.location="<?php echo base_url() ?>index.php/dms/daftar_akun";
+                    window.location="<?php echo base_url() ?>index.php/dms/buat_akun";
                     } else if(a=='taken'){
                       ajax_request=false;
                     } else {

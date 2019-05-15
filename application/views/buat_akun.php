@@ -61,7 +61,7 @@
                         <option value='2'>Kepala Laboraturium</option>
                         <option value='3'>Dosen</option>
                         <option value='4'>Aslab</option>
-                        <option value='5'>Staff</option>
+                        <option value='5'>Laboran</option>
                       </select>
           				</div> 
                   <div class='form-group' id="bagian">

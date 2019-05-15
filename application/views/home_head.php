@@ -15,7 +15,7 @@ elseif ($user_level=="2"){
   $levela="'Kepala Laboraturium'";
 }
 elseif ($user_level=="5"){
-  $levela="laboran";
+  $levela="Laboran";
 }
 elseif ($user_level=="4"){
   $levela="Admin Sistem";

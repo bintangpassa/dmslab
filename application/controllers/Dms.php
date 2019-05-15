@@ -55,7 +55,7 @@ class Dms extends CI_Controller {
 	public function proseslogin(){
 		if($this->input->post()){
 	 		$user=$this->input->post("inputUsername",TRUE);
-	 		$pass=md5($this->input->post("inputPassword"));
+	 		$pass=sha1(md5($this->input->post("inputPassword")));
 
 	 		$cari=$this->db->get_where("user",array("nama_user"=>$user,"password_user"=>$pass,"status_user"=>"1","terhapus_user"=>"0"));
 
@@ -348,7 +348,7 @@ class Dms extends CI_Controller {
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
 				'daftar_akun'=>$this->dakun,
-				'npage'=>"",
+				'npage'=>"atur_mk",
 				);
 			$this->load->view('home_head',$data);
 			$this->load->view('input_matakuliah');
