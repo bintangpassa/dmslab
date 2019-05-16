@@ -21,7 +21,7 @@ elseif ($user_level=="4"){
   $levela="Admin Sistem";
 }
 else{
-  $levela="Super Admin";
+  $levela="Developer";
 }
 ?>
 
@@ -116,7 +116,7 @@ else{
             <span>Akun</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <?php if ($user_level==0 || $user_level==1): ?>
+            <?php if ($user_level==0 || $user_level==1 || $user_level==2): ?>
               <h6 class="dropdown-header">Akun lain :</h6>
                 <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/dms/buat_akun">Buatkan akun baru</a>
                 <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/dms/daftar_akun">Data semua akun</a>
@@ -128,15 +128,15 @@ else{
             <a class="dropdown-item" href="forgot-password.html">Atur akun saya</a>
           </div>
         </li>
-        <?php if ($user_level==0 || $user_level==2 || $user_level==1): ?>
+        <?php if ($user_level==0 || $user_level==1 || $user_level==2 || $user_level==5): ?>
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-fw fa-folder"></i>
             <span>Instruksi Kerja</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <?php if ($user_level==0 || $user_level==1): ?>
-              <h6 class="dropdown-header">Admin Lab :</h6>
+            <?php if ($user_level==0 || $user_level==1 || $user_level==5): ?>
+              <h6 class="dropdown-header">Laboran :</h6>
               <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/dms/instruksi_kerja_unggah_al">Unggah baru</a>
               <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/dms/instruksi_kerja_al">Daftar instruksi</a>
               <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/dms/instruksi_kerja_histori_al">Riwayat</a>

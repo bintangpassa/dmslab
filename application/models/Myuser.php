@@ -8,6 +8,7 @@ class Myuser extends CI_Model {
  public $password;
  public $level;
  public $nama_lengkap;
+ public $id_laboran;
 
  function __construct (){
  	parent::__construct();
@@ -25,8 +26,20 @@ class Myuser extends CI_Model {
  	$this->password=$row->password_user;
  	$this->level=$row->level_user;
  	$this->nama_lengkap=$row->nama_lengkap_user;
+ 	$this->id_laboran="";
+ 				if ($this->level == 5) {
+			 		$cari2=$this->db->get_where("laboran",array("id_user"=>$row->id_user,"status_laboran"=>"1","terhapus_laboran"=>"0"));
+			 		if($cari2->num_rows()<1){
+	 					$this->id_laboran="";
+	 				}
+	 				else{
+	 					$row2=$cari2->row();
+	 					$this->id_laboran=$row2->id_laboran;
+	 				}
+			 	}	
  	$data_sessi=array('login'=>true,
 	 				  'id_user'=>$this->id,
+	 				  'id_laboran'=>$this->id_laboran,
 	 				  'nama_user'=>$this->nama,
 	 				  'password_user'=>$this->password,
 	 				  'level_user'=>$this->level);
@@ -48,6 +61,7 @@ class Myuser extends CI_Model {
  	else {
  		$data_sessi=array('login'=>false,
 	 						'id_user'=>"",
+	 						'id_laboran'=>"",
 	 						'nama_user'=>"",
 	 						'password_user'=>"");
 	 	$this->session->set_userdata($data_sessi);

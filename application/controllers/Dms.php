@@ -26,6 +26,7 @@ class Dms extends CI_Controller {
 		$this->login= $this->user->set($this->session->userdata('id_user'),$this->session->userdata('nama_user'),$this->session->userdata('password_user'));
 
 		$this->id_user=$this->user->id;
+		$this->id_laboran=$this->user->id_laboran;
 		$this->nama_user=$this->user->nama;
 		$this->password_user=$this->user->password;
 		$this->level_user=$this->user->level;
@@ -64,6 +65,7 @@ class Dms extends CI_Controller {
 	 		}
 	 		else{
 	 			$row=$cari->row();
+	 			
 	 			$data_sessi=array('login'=>true,
 	 						'id_user'=>$row->id_user,
 	 						'nama_user'=>$row->nama_user,
@@ -147,6 +149,7 @@ class Dms extends CI_Controller {
 				'title'=>"Home",
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
+				'id_laboran'=>$this->id_laboran,
 				'burl'=>base_url()."index.php/dms/",
 				'npage'=>"",
 				);
