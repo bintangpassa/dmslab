@@ -442,7 +442,144 @@
       <?php } ?> 
     </script>
 
-    
+    <!-- script untuk  upload instruksi (dari laboran)-->
+    <?php  if($npage=="upload_instruksi"){ ?>
+      <script src="<?php echo base_url(); ?>js/dropzone.min.js"></script>
+      <!-- <script src="<?php echo base_url(); ?>js/dropzone-amd-module.min.js"></script> -->
+    <?php  } ?> 
+
+    <script type="text/javascript">
+      <?php  if($npage=="upload_instruksi"){ ?>
+        Dropzone.autoDiscover = false;
+
+        /* Untuk mencek inputan user*/
+        var valid_namains=false,
+            valid_jenisins=false,
+            valid_dokumen=false;
+        
+        /*nama instruksi*/
+      $(".form-instruksi-baru input#namains").on("blur keyup",function(){
+        var namavall=$(this).val();
+        var zz=$(this);
+        if(namavall!=''){
+          if(/^\w[\w\s]+$/.test(namavall)){
+            zz.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-ok form-control-feedback feed-success');
+           zz.parent().siblings('span.label-danger').html('');
+           valid_namains=true;
+          } else {
+            zz.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-remove form-control-feedback feed-error');
+           zz.parent().siblings('span.label-danger').html('Hanya diperbolehkan huruf/angka/underscore/spasi. Dan jg ada spasi di awal');
+           valid_namains=false;
+          }
+        } else {
+           zz.siblings('.form-control-feedback').attr('class','glyphicon glyphicon-remove form-control-feedback feed-error');
+           zz.parent().siblings('span.label-danger').html('Tidak boleh kosong');
+           valid_namains=false;
+        }
+      });
+
+      
+      var form_no_error=false;
+      function cek_no_error(){
+        if(valid_namains){
+          form_no_error=true;
+        }else{
+          form_no_error=false;
+        }
+      }
+
+      setInterval(cek_no_error,500);
+      
+          /* Untuk upload dokumen admin */
+           var sedang_upload_dokumen=false;
+           var dokumen_terupload=false;
+           var form_username_has_error=false;
+           var file_temp_telah_terhapus=false;
+           var sesi=$('.sesi-form').val();
+           var dokumenBaru=new Dropzone(".dokumen_user", { url: "<?php echo base_url() ?>index.php/Ajax_instruksi/dokumen_new" ,
+                                                      maxFilesize: 10,
+                                                      maxFiles: 1,
+                                                      method:'post',
+                                                      acceptedFiles:".doc,.docx,.pdf",
+                                                      paramName:"userfile",
+                                                      addRemoveLinks: true,
+                                                      headers: {sesi:"2"},
+                                                      dictDefaultMessage:"Drop dokumen disini untuk diunggah <br>",
+                                                      dictInvalidFileType:"Type file ini tidak dizinkan",
+                                                      dictRemoveFile:"Batalkan gambar ini"
+                                                    });
+           dokumenBaru.on("sending",function(a,b,c){
+            a.token=Math.random();
+            c.append('sesi',sesi);
+            c.append('token_file',a.token);
+            sedang_upload_dokumen=true;
+           })
+           dokumenBaru.on("success",function(a,b,c){
+            sedang_upload_dokumen=false;
+            dokumen_terupload=true;
+            file_temp_telah_terhapus=false;
+           })
+           dokumenBaru.on("error",function(a,b){ 
+            sedang_upload_dokumen=false;
+            dokumen_terupload=(dokumen_terupload)?true:dokumen_terupload;
+           })
+           dokumenBaru.on("canceled",function(){
+            sedang_upload_dokumen=false;
+            dokumen_terupload=false;
+           })
+           dokumenBaru.on("removedfile",function(a){
+            if(a.status=='success'){
+              dokumen_terupload=false;
+              var token=a.token;
+              $.ajax({
+                type:"POST",
+                url:"<?php echo base_url() ?>index.php/Ajax_instruksi/delete_dokumen_temp",
+                data:{file_token:token},
+                cache:false,
+                success:function(){
+                  file_temp_telah_terhapus=true;
+                }
+              })
+            }
+           })
+
+            $('.form-instruksi-baru').submit(function(e){
+                e.preventDefault();
+                if(!ajax_request){
+                if(form_no_error){
+                    proses_new_instruksi($(this));
+                 }
+               }
+              });
+
+            function proses_new_instruksi(_this){
+              if(!ajax_request){
+                ajax_request=true;
+
+              var namains=_this.find("input#namains").val(),
+                  jenisins=_this.find("select#jenisins").val(),
+                  id_laboran=<?php echo $id_laboran?>,
+                  sessi=_this.find("input.sesi-form").val();
+
+                $.ajax({
+                  type:"POST",
+                  url:"<?php echo base_url() ?>index.php/ajax_instruksi/new_instruksi",
+                  data:{"namains":namains,"jenisins":jenisins,"id_laboran":id_laboran,"sessi":sessi},
+                  cache:false,
+                  success:function(a){
+                    if(a=="ok"){
+                      hide_proses();
+                      window.location="<?php echo base_url()?>index.php/dms/instruksi_kerja_al";
+                    }  
+                    hide_proses();
+                  }
+                });
+              }
+            }
+
+          <?php  } //Akhir untuk form user baru
+           ?> 
+    </script>
 
   </body>
 

@@ -105,11 +105,16 @@ class Dms extends CI_Controller {
 			redirect("dms/login");
 		}
 		else {
+
+			$this->load->model("Daftar_ins","ins");
+			$this->dins = $this->ins->get_ins($this->id_laboran);
+
 			$data=array(
 				'title'=>"Home",
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
+				'daftar_ins'=>$this->dins,
 				'npage'=>"",
 				);
 
@@ -151,7 +156,7 @@ class Dms extends CI_Controller {
 				'user_level'=>$this->level_user,
 				'id_laboran'=>$this->id_laboran,
 				'burl'=>base_url()."index.php/dms/",
-				'npage'=>"",
+				'npage'=>"upload_instruksi",
 				);
 
 			$this->load->view('home_head',$data);
@@ -166,11 +171,14 @@ class Dms extends CI_Controller {
 			redirect("dms/login");
 		}
 		else {
+			$this->load->model("Daftar_ins","ins");
+			$this->dins = $this->ins->get_ins_ku();
 			$data=array(
 				'title'=>"Home",
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
+				'daftar_ins'=>$this->dins,
 				'npage'=>"",
 				);
 
@@ -380,6 +388,20 @@ class Dms extends CI_Controller {
 			$this->load->view('home_head',$data);
 			$this->load->view('atur_jenisdokumen');
 			$this->load->view('home_foot');
+		}
+	}
+
+	public function download($pathh = NULL)
+	{
+		if(!$this->login){
+			redirect("dms/login");
+		}
+		else {			
+			$this->load->helper('download');
+			if ($pathh) {
+				$pathh=FCPATH."dokumen_terupload/".$pathh;
+			    force_download ( $pathh,NULL);
+			}
 		}
 	}
 }

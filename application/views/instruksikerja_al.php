@@ -15,26 +15,28 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th>No</th>
                       <th>Nama Instruksi</th>
                       <th>Nama Dokumen</th>
                       <th>Jenis</th>
                       <th>Tanggal Unggah</th>
-                      <th>Tanggal Acc</th>
+                      <th>Status</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
+                      <th>No</th>
                       <th>Nama Instruksi</th>
                       <th>Nama Dokumen</th>
                       <th>Jenis</th>
                       <th>Tanggal Unggah</th>
-                      <th>Tanggal Acc</th>
+                      <th>Status</th>
                       <th>Aksi</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    
+                    <?php echo $daftar_ins?>
                   </tbody>
                 </table>
               </div>

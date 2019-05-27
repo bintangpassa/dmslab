@@ -49,7 +49,7 @@ class Ajax_akun extends CI_Controller {
 		$nipnim=($this->input->post("nipnim"));
 		$level=($this->input->post("leveluser"));
 		$bagian=($this->input->post("bagian"));
-		$terdaftar=date("Y-m-d h:i:s",time());
+		$terdaftar=date("Y-m-d H:i:s",time());
 
 		// $level=($admin_level=="super")?"1":"0";
 		

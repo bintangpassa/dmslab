@@ -15,77 +15,28 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th>No</th>
                       <th>Nama Instruksi</th>
                       <th>Nama Dokumen</th>
                       <th>Jenis</th>
-                      <th>Nama pengunggah</th>
+                      <th>Nama Pengunggah</th>
                       <th>Tanggal Unggah</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
+                      <th>No</th>
                       <th>Nama Instruksi</th>
                       <th>Nama Dokumen</th>
                       <th>Jenis</th>
-                      <th>Nama pengunggah</th>
+                      <th>Nama Pengunggah</th>
                       <th>Tanggal Unggah</th>
                       <th>Aksi</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    <tr>
-                      <td>Pembaharuan Lab</td>
-                      <td>ins_2491_fikar.doc <a href="#">(unduh)</a></td>
-                      <td>Perawatan</td>
-                      <td>Fikar</td>
-                      <td>2011/04/25</td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn btn-primary">ACC</button>
-                          <button class="btn btn-danger">TOLAK</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Pembaharuan Lab</td>
-                      <td>ins_2491_fikar.doc <a href="#">(unduh)</a></td>
-                      <td>Perawatan</td>
-                      <td>Fikar</td>
-                      <td>2011/04/25</td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn btn-primary">ACC</button>
-                          <button class="btn btn-danger">TOLAK</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Pembaharuan Lab</td>
-                      <td>ins_2491_fikar.doc <a href="#">(unduh)</a></td>
-                      <td>Majaerial</td>
-                      <td>Fikar</td>
-                      <td>2011/04/25</td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn btn-primary">ACC</button>
-                          <button class="btn btn-danger">TOLAK</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Pembaharuan Lab</td>
-                      <td>ins_2491_fikar.doc <a href="#">(unduh)</a></td>
-                      <td>Perkuliahan</td>
-                      <td>Fikar</td>
-                      <td>2011/04/25</td>
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn btn-primary">ACC</button>
-                          <button class="btn btn-danger">TOLAK</button>
-                        </div>
-                      </td>
-                    </tr>
+                    <?php echo $daftar_ins?>
                   </tbody>
                 </table>
               </div>

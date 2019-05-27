@@ -40,6 +40,8 @@ else{
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/sb-admin.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/basic.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/dropzone.min.css">
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url(); ?>css/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
