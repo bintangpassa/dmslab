@@ -191,7 +191,6 @@ else{
               <a class="dropdown-item" href="forgot-password.html">Request template</a>
               <a class="dropdown-item" href="forgot-password.html">Unggah laporan</a>
               <a class="dropdown-item" href="forgot-password.html">Daftar laporan</a>
-              <a class="dropdown-item" href="forgot-password.html">Riwayat</a>
               
             <?php endif ?>
             
@@ -201,14 +200,12 @@ else{
               <a class="dropdown-item" href="forgot-password.html">Unggah template baru</a>
               <a class="dropdown-item" href="forgot-password.html">Daftar template</a>
               <a class="dropdown-item" href="forgot-password.html">Daftar laporan</a>
-              <a class="dropdown-item" href="forgot-password.html">Riwayat</a>
             <?php endif ?>
             
             <?php if ($user_level==0 || $user_level==2): ?>
               <h6 class="dropdown-header">Ka Ur. Lab :</h6>
               <a class="dropdown-item" href="forgot-password.html">Evaluasi laporan</a>
               <a class="dropdown-item" href="forgot-password.html">Daftar ter-evaluasi</a>
-              <a class="dropdown-item" href="forgot-password.html">Riwayat</a>
             <?php endif ?>
               
 
@@ -226,7 +223,6 @@ else{
             <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/dms/input_matakuliah">Atur Matakuliah</a>
             <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/dms/atur_jenisdokumen">Atur Jenis Dokumen</a>
             <a class="dropdown-item" href="register.html">Akun Google Drive</a>
-            <a class="dropdown-item" href="forgot-password.html">Aturan level user</a>
           </div>
         </li>
         <li class="nav-item dropdown">

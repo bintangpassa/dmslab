@@ -193,12 +193,15 @@ class Dms extends CI_Controller {
 		if(!$this->login){
 			redirect("dms/login");
 		}
-		else {
+		else{
+			$this->load->model("Daftar_ins","ins");
+			$this->dins = $this->ins->get_ins_ku1();
 			$data=array(
 				'title'=>"Home",
 				'user'=>$this->nama_lengkap_user,
 				'user_level'=>$this->level_user,
 				'burl'=>base_url()."index.php/dms/",
+				'daftar_ins'=>$this->dins,
 				'npage'=>"",
 				);
 

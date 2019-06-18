@@ -581,6 +581,10 @@
            ?> 
     </script>
 
+    <?php  if($npage=="evaluasi_instruksi"){ ?>
+      <!-- <script src="<?php echo base_url(); ?>js/dropzone.min.js"></script> -->
+    <?php  } ?> 
+
   </body>
 
 </html>

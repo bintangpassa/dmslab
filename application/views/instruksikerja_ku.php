@@ -15,119 +15,28 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th>No</th>
                       <th>Nama Instruksi</th>
                       <th>Nama Dokumen</th>
                       <th>Jenis</th>
                       <th>Nama Pengunggah</th>
                       <th>Tanggal Unggah</th>
-                      <th>Tanggal Acc</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
+                      <th>No</th>
                       <th>Nama Instruksi</th>
                       <th>Nama Dokumen</th>
                       <th>Jenis</th>
                       <th>Nama Pengunggah</th>
                       <th>Tanggal Unggah</th>
-                      <th>Tanggal Acc</th>
                       <th>Aksi</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    <tr>
-                      <td>Pembaharuan Lab</td>
-                      <td>ins_2491_fikar.doc</td>
-                      <td>Perawatan</td>
-                      <td>Fikar</td>
-                      <td>2011/04/25</td>
-                      <td>2011/05/02</td>
-                      <td>
-                        <div class="">
-                          <button class="btn btn-primary ">Unduh</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Sosialisasi Aslab</td>
-                      <td>ins_2490_fikar.doc</td>
-                      <td>Manajerial</td>
-                      <td>Fikar</td>
-                      <td>2011/04/20</td>
-                      <td>2011/04/22</td>
-                      <td>
-                        <div class="">
-                          <button class="btn btn-primary ">Unduh</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Perbaikan Komputer</td>
-                      <td>ins_2489_fikar.doc</td>
-                      <td>Perawatan</td>
-                      <td>Fikar</td>
-                      <td>2011/04/05</td>
-                      <td>2011/04/08</td>
-                      <td>
-                        <div class="">
-                          <button class="btn btn-primary ">Unduh</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Rekapitulasi Keungan</td>
-                      <td>ins_2488_fikar.doc</td>
-                      <td>Manajerial</td>
-                      <td>Fikar</td>
-                      <td>2011/02/15</td>
-                      <td>2011/02/27</td>
-                      <td>
-                        <div class="">
-                          <button class="btn btn-primary ">Unduh</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Pembaharuan Lab</td>
-                      <td>ins_2491_fikar.doc</td>
-                      <td>Perawatan</td>
-                      <td>Fikar</td>
-                      <td>2011/04/25</td>
-                      <td>2011/05/02</td>
-                      <td>
-                        <div class="">
-                          <button class="btn btn-primary ">Unduh</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Sosialisasi Aslab</td>
-                      <td>ins_2490_fikar.doc</td>
-                      <td>Manajerial</td>
-                      <td>Fikar</td>
-                      <td>2011/04/20</td>
-                      <td>2011/04/22</td>
-                      <td>
-                        <div class="">
-                          <button class="btn btn-primary ">Unduh</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Perbaikan Komputer</td>
-                      <td>ins_2489_fikar.doc</td>
-                      <td>Perawatan</td>
-                      <td>Fikar</td>
-                      <td>2011/04/05</td>
-                      <td>2011/04/08</td>
-                      <td>
-                        <div class="">
-                          <button class="btn btn-primary ">Unduh</button>
-                        </div>
-                      </td>
-                    </tr>
-                   
+                    <?php echo $daftar_ins?>
                   </tbody>
                 </table>
               </div>
